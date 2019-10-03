@@ -17,8 +17,11 @@ int		get_next_line(const int fd, char **line)
 	static char	*bb[ARR_SIZE];
 	if (!bb[fd])
 		if (!(bb[fd] = (char*)malloc(BUFF_SIZE + 1)))
+		{
+			ft_free_arr(&bb);
 			return (-1);
-
+		}
+	
 
 
 }
