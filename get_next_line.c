@@ -1,119 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/16 22:31:51 by ecelsa            #+#    #+#             */
+/*   Updated: 2019/11/16 22:31:55 by ecelsa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
-
-void	ft_strdel(char **as)
-{
-	if (as != NULL)
-	{
-		free(*as);
-		*as = NULL;
-	}
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	unsigned char	*str;
-	//unsigned char	ch;
-
-	//ch = (unsigned char)c;
-	str = (unsigned char*)s;
-	while (*str)
-	{
-		if (*str == c)
-			return ((char*)str);
-		str++;
-	}
-	if (c == 0)
-		return ((char*)str);
-	return (NULL);
-}
-
-char	*ft_strnew(size_t size)
-{
-	char	*str;
-	char	*s;
-
-	if (size + 1 < size)
-		return (NULL);
-	if (!(str = (char*)malloc(size + 1)))
-		return (NULL);
-	else
-	{
-		s = str;
-		while (size-- + 1)
-			*(s++) = 0;
-	}
-	return (str);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*str;
-	char	*st1;
-	char	*st2;
-	size_t	i;
-
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	i = 0;
-	st1 = (char*)s1;
-	while (*st1++)
-		i++;
-	st1 = (char*)s2;
-	while (*st1++)
-		i++;
-	if (!(st1 = (char*)malloc(i)))
-		return (NULL);
-	str = st1;
-	st2 = (char*)s1;
-	while (*st2++)
-		*st1++ = *(st2 - 1);
-	st2 = (char*)s2;
-	while (*st2++)
-		*st1++ = *(st2 - 1);
-	*st1 = 0;
-	return (str);
-}
-
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
-{
-	char	*s1;
-	char	*s2;
-	char	*s3;
-
-	if ((len + 1) == 0 || s == NULL)
-		return (NULL);
-	if (!(s1 = (char*)malloc(len + 1)))
-		return (NULL);
-	s3 = s1;
-	s2 = (char*)s + start;
-	while (len--)
-	{
-		*s1 = *s2;
-		s1++;
-		s2++;
-	}
-	*s1 = 0;
-	return (s3);
-}
-
-char	*ft_strdup(const char *s)
-{
-	size_t		size;
-	char		*str;
-
-	size = 0;
-	str = (char *)s;
-	while (*str++ != 0)
-		size++;
-	size++;
-	str = NULL;
-	str = (char*)malloc(size);
-	if (str == NULL)
-		return (NULL);
-	while (size--)
-		str[size] = s[size];
-	return (str);
-}
 
 int		ft_new_line(char **s, char **line, int fd, int ret)
 {

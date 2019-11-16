@@ -1,21 +1,34 @@
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/17 00:13:36 by ecelsa            #+#    #+#             */
+/*   Updated: 2019/11/17 00:42:11 by ecelsa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
+#include <stdio.h>
 
-int main(int argc, char **argv) 
+int			main(int argc, char **argv)
 {
-  int     fd;
-  char    *s;
+	int		fd;
+	char	*line;
 
-  s = NULL;
-  if (argc != 2)
-    return (0);
-  fd = open(argv[1], O_RDONLY);
-  printf("%s\n", s);
-  if (get_next_line(fd, &s) > 0)
-    printf("!%s\n", s);
-  if (get_next_line(fd, &s) > 0)
-    printf("!%s\n", s);  
-  return 0;
+	if (argc == 2)
+	{
+		if (!(fd = open(argv[1], O_RDONLY)))
+			exit(-1);
+		while (get_next_line(fd, &line) > 0)
+		{
+			printf("%s\n", line);
+			ft_strdel(&line);
+		}
+		ft_strdel(&line);
+		close(fd);
+	}
+	return (0);
 }
