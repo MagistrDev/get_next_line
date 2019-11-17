@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 23:23:42 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/20 23:54:05 by ecelsa           ###   ########.fr       */
+/*   Updated: 2019/11/17 06:58:19 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 char	*ft_strchr(const char *s, int c)
 {
 	unsigned char	*str;
-	unsigned char	ch;
 
-	ch = (unsigned char)c;
 	str = (unsigned char*)s;
 	while (*str)
 	{
